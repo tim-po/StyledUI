@@ -8,7 +8,7 @@ import { visualisationProcessor } from '../../core/processors/visualisation'
 import { lighten } from 'color2k'
 import { getColorScheme } from '../../core/processors/higherOrder/colorScheme'
 import { defaultColors } from '../../theme'
-import { Processor } from '../../types'
+import {Processor, PropsFrom} from '../../types'
 import { AllCssProps } from '../../core'
 import animationProcessor from '../../core/processors/animation'
 
@@ -84,11 +84,11 @@ const buttonProcessor = cssProcessor(
   ),
 )
 
-const BaseButton = styled.button`
+const Button = styled.button<PropsFrom<typeof buttonProcessor>>`
   ${buttonProcessor}
 `
 
-BaseButton.defaultProps = {
+Button.defaultProps = {
   materialPart: 'fill',
   clickable: true,
   transition: 0.2,
@@ -96,4 +96,4 @@ BaseButton.defaultProps = {
   defaultAspectRatio: 'horizontal',
 }
 
-export default BaseButton
+export default Button
