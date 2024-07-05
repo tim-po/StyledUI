@@ -51,7 +51,7 @@ export const typographyProcessor = (props: TextProps) => {
       case 'body':
         break
       case 'label':
-        newFontConfig.fontSize += 3
+        newFontConfig.fontSize = 18 + (newFontConfig.fontSize - 18) * 2
         break
     }
   }
@@ -59,7 +59,7 @@ export const typographyProcessor = (props: TextProps) => {
   if (props.bold) {
     newFontConfig.fontWeight = 'bold'
   }
-  if (props.bolder) {
+  if (props.bold) {
     newFontConfig.fontWeight = 'bolder'
   }
   if (props.light) {
@@ -69,8 +69,5 @@ export const typographyProcessor = (props: TextProps) => {
     newFontConfig.fontWeight = 'lighter'
   }
 
-  if (newFontConfig.fontSize === 24) {
-    console.log(props, newFontConfig)
-  }
   return newFontConfig
 }

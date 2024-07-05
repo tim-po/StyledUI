@@ -4,7 +4,6 @@ import {
   combined,
   combinedCssProcessors,
   PropsIntersectionFromArrayOfFunctions,
-  UnionToIntersection,
 } from './index'
 
 export type Hoverable<ComponentPropType> = ComponentPropType & {
@@ -34,13 +33,7 @@ export const hoverableCssProcessor = function <Processors extends CssProcessor<a
 export const hoverable = function <Processors extends Processor<any>[]>(
   ...processors: Processors
 ) {
-  return (
-    props: Hoverable<
-      UnionToIntersection<
-        Parameters<{ [I in keyof Processors]: Processors[I] }[number]>[number]
-      >
-    >,
-  ) => {
+  return (props: Hoverable<PropsIntersectionFromArrayOfFunctions<Processors>>) => {
     const processor = combined(...processors)
     return {
       ...processor(props),

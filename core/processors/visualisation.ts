@@ -13,7 +13,7 @@ import {
   ThicknessProps,
 } from './extensions/material'
 
-export type Side = 'top' | 'left' | 'right' | 'bottom'
+type Side = 'top' | 'left' | 'right' | 'bottom'
 
 function CssFromRadius(radius: UnitValue, sides?: boolean | Side | Side[]) {
   const cssFromRadius = CssFrom(radius)

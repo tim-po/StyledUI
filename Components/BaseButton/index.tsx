@@ -8,25 +8,11 @@ import { visualisationProcessor } from '../../core/processors/visualisation'
 import { lighten } from 'color2k'
 import { getColorScheme } from '../../core/processors/higherOrder/colorScheme'
 import { defaultColors } from '../../theme'
-import {Processor, PropsFrom} from '../../types'
+import { Processor } from '../../types'
 import { AllCssProps } from '../../core'
 import animationProcessor from '../../core/processors/animation'
 
-type ButtonShortcutProps = {
-  primary?: boolean
-  secondary?: boolean
-  disabledStyle?: boolean
-}
-
-const disabledPrimary = css`
-  background: #c6c6c6;
-  color: #707070;
-`
-
-const disabledSecondary = css`
-  color: #707070;
-  border: 2px solid #707070;
-`
+type ButtonShortcutProps = { primary?: boolean; secondary?: boolean }
 const buttonShortcutsProcessor: Processor<ButtonShortcutProps> = (
   props: ButtonShortcutProps,
 ) => {
@@ -41,11 +27,8 @@ const buttonShortcutsProcessor: Processor<ButtonShortcutProps> = (
             color: white;
             font-weight: bold;
 
-            ${props.disabledStyle && disabledPrimary}
             &:hover {
               background: ${lighten(colors?.primary || '', 0.1)};
-
-              ${props.disabledStyle && disabledPrimary}
             }
           `
       }
@@ -55,14 +38,10 @@ const buttonShortcutsProcessor: Processor<ButtonShortcutProps> = (
             color: ${colors?.primary};
             border: 2px solid ${colors?.primary};
             font-weight: bold;
-            background: transparent;
 
-            ${props.disabledStyle && disabledSecondary}
             &:hover {
               color: ${lighten(colors?.primary || '', 0.2)};
               border: 2px solid ${lighten(colors?.primary || '', 0.2)};
-              ${props.disabledStyle && disabledSecondary}
-
             }
           `
       }`,
@@ -84,11 +63,11 @@ const buttonProcessor = cssProcessor(
   ),
 )
 
-const Button = styled.button<PropsFrom<typeof buttonProcessor>>`
+const BaseButton = styled.button`
   ${buttonProcessor}
 `
 
-Button.defaultProps = {
+BaseButton.defaultProps = {
   materialPart: 'fill',
   clickable: true,
   transition: 0.2,
@@ -96,4 +75,4 @@ Button.defaultProps = {
   defaultAspectRatio: 'horizontal',
 }
 
-export default Button
+export default BaseButton

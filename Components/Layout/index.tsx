@@ -14,7 +14,6 @@ type LayoutShortcuts = {
   barLayout?: boolean
   headerLayout?: boolean
   fillContainer?: boolean
-  fullWidth?: boolean
 }
 
 const layoutShortcutsProcessor: Processor<LayoutShortcuts> = (
@@ -60,14 +59,6 @@ const layoutShortcutsProcessor: Processor<LayoutShortcuts> = (
       top: 0,
       left: 0,
       right: 0,
-      margin: 0,
-      borderRadius: 0,
-    }
-  }
-
-  if (props.fullWidth) {
-    newProps = {
-      width: '100%',
       margin: 0,
       borderRadius: 0,
     }

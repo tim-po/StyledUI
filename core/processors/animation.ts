@@ -2,7 +2,7 @@ import { css, Keyframes, keyframes } from 'styled-components'
 import { Processor } from '../../types'
 import { GlobalValues } from '../../TypedCss'
 
-export type AnimationDirection = 'normal' | 'reverse' | 'alternate' | 'alternate-reverse'
+type AnimationDirection = 'normal' | 'reverse' | 'alternate' | 'alternate-reverse'
 
 export type AnimationConfig = {
   keyframes: Keyframes

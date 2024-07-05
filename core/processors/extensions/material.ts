@@ -2,14 +2,7 @@ import { css, FlattenSimpleInterpolation } from 'styled-components'
 import { ColorScheme } from '../../../types'
 
 export type MaterialPart = 'background' | 'fill' | 'separator'
-type ThicknessModifier =
-  | 'opaque'
-  | 'thick'
-  | 'regular'
-  | 'thin'
-  | 'ultraThin'
-  | 'blur'
-  | 'ultraThick'
+type ThicknessModifier = 'opaque' | 'thick' | 'regular' | 'thin' | 'ultraThin'
 export type MaterialConfig = {
   separator: () => FlattenSimpleInterpolation
   fill: (opacity: number) => FlattenSimpleInterpolation
@@ -24,8 +17,6 @@ export type ThicknessProps = {
   regularMaterial?: boolean
   thinMaterial?: boolean
   ultraThinMaterial?: boolean
-  blurMaterial?: boolean
-  ultraThickMaterial?: boolean
 }
 
 export const getThickness = (props: ThicknessProps) => {
@@ -43,12 +34,6 @@ export const getThickness = (props: ThicknessProps) => {
   }
   if (props.ultraThinMaterial) {
     return 'ultraThin'
-  }
-  if (props.blurMaterial) {
-    return 'blur'
-  }
-  if (props.ultraThickMaterial) {
-    return 'ultraThick'
   }
   if (props.defaultMaterialThickness) {
     return props.defaultMaterialThickness
@@ -85,13 +70,6 @@ export const materialFragments: Record<ColorScheme, MaterialConfig> = {
           return css`
             background: rgb(0, 0, 0);
           `
-        case 'ultraThick':
-          return css`
-            background-color: rgba(37, 37, 37, 1);
-            background-image: linear-gradient(0deg, rgba(156, 156, 156, 0.25) 0%, rgba(156, 156, 156, 0.25) 100%);
-            background-blend-mode: overlay;
-            backdrop-filter: blur(25px);`
-
         case 'thick':
           return css`
             background-color: rgba(37, 37, 37, 0.9);
@@ -115,14 +93,6 @@ export const materialFragments: Record<ColorScheme, MaterialConfig> = {
         case 'ultraThin':
           return css`
             background-color: rgba(37, 37, 37, 0.55);
-            background-image: linear-gradient(0deg, rgba(156, 156, 156, 0.2) 0%, rgba(156, 156, 156, 0.2) 100%);
-            background-blend-mode: overlay;
-
-            backdrop-filter: blur(14px);
-          `
-        case 'blur':
-          return css`
-            background-color: rgba(37, 37, 37, 0.2);
             background-image: linear-gradient(0deg, rgba(156, 156, 156, 0.2) 0%, rgba(156, 156, 156, 0.2) 100%);
             background-blend-mode: overlay;
 
@@ -152,12 +122,6 @@ export const materialFragments: Record<ColorScheme, MaterialConfig> = {
           return css`
             background: rgb(255, 255, 255);
           `
-        case 'ultraThick':
-          return css`
-            background: rgba(153, 153, 153, 1);
-            background-blend-mode: color-dodge, normal;
-            backdrop-filter: blur(25px);
-          `
         case 'thick':
           return css`
             background: rgba(153, 153, 153, 0.97);
@@ -176,12 +140,6 @@ export const materialFragments: Record<ColorScheme, MaterialConfig> = {
             background-blend-mode: color-dodge, normal;
             backdrop-filter: blur(25px);`
         case 'ultraThin':
-          return css`
-            background: rgba(191, 191, 191, 0.44);
-            background-blend-mode: color-dodge, normal;
-            backdrop-filter: blur(25px);
-          `
-        case 'blur':
           return css`
             background: rgba(191, 191, 191, 0.44);
             background-blend-mode: color-dodge, normal;

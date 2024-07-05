@@ -23,5 +23,6 @@ export const fontCssProcessor: CssProcessor<FontCssProps> = (props: FontCssProps
         : ''
     }
     ${props.font ? css` font: ${props.font};` : ''}
+
   `
 }

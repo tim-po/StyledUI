@@ -122,8 +122,6 @@ export const dimensionsProcessor: Processor<MarginPaddingProps> = (
     if (size) {
       newProps.padding = paddingSizes[size]
     }
-  } else {
-    newProps.padding = undefined
   }
   if (props.padding !== undefined && typeof props.padding !== 'boolean') {
     if (sizes.includes(props.padding as SizeModifier)) {
@@ -227,8 +225,8 @@ export const layoutFlexProcessor: Processor<FlexProps> = (
       verticalAlignment = end
     }
     if (isRow) {
-      newProps.justifyContent = verticalAlignment
-      newProps.alignItems = horizontalAlignment
+      newProps.justifyContent = horizontalAlignment
+      newProps.alignItems = verticalAlignment
     } else {
       newProps.alignItems = verticalAlignment
       newProps.justifyContent = horizontalAlignment

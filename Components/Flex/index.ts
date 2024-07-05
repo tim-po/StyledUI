@@ -11,14 +11,14 @@ import { Processor } from '../../types'
 import { HTMLAttributes } from 'react'
 import animationProcessor from '../../core/processors/animation'
 
-type FlexShortcuts = {
+type LayoutShortcuts = {
   column?: boolean
   row?: boolean
   reverse?: boolean
 }
 
-const flexShortcutsProcessor: Processor<FlexShortcuts> = (
-  props: FlexShortcuts,
+const flexShortcutsProcessor: Processor<LayoutShortcuts> = (
+  props: LayoutShortcuts,
 ): AllCssProps & HTMLAttributes<never> => {
   if (props.row) {
     return {
@@ -51,7 +51,6 @@ const Flex = styled.div`
 
 Flex.defaultProps = {
   gap: 'medium',
-  flex: 'row',
 }
 
 export default Flex

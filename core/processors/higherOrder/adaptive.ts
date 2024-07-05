@@ -4,7 +4,6 @@ import {
   combined,
   combinedCssProcessors,
   PropsIntersectionFromArrayOfFunctions,
-  UnionToIntersection,
 } from './index'
 
 const MOBILE_MAX_WIDTH = 1000
@@ -37,13 +36,7 @@ export const adaptiveCssProcessor = <Processors extends CssProcessor<any>[]>(
 export const adaptive = <Processors extends Processor<any>[]>(
   ...processors: Processors
 ) => {
-  return (
-    props: Adaptive<
-      UnionToIntersection<
-        Parameters<{ [I in keyof Processors]: Processors[I] }[number]>[number]
-      >
-    >,
-  ) => {
+  return (props: Adaptive<PropsIntersectionFromArrayOfFunctions<Processors>>) => {
     const processor = combined(...processors)
     return {
       mobileBreakpoint: props.mobileBreakpoint || MOBILE_MAX_WIDTH,

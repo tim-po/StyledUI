@@ -1,5 +1,5 @@
 import { CssFrom, MarginPaddingValue, WidthHeightValue } from '../../../TypedCss'
-import styled, { css } from 'styled-components'
+import { css } from 'styled-components'
 import { CssProcessor } from '../../../types'
 
 export type DimensionCssProps = {
@@ -29,10 +29,3 @@ export const dimensionCssProcessor: CssProcessor<DimensionCssProps> = (
     ${props.shrink !== undefined ? css`flex-shrink: ${props.shrink};` : ''}
   `
 }
-
-export const demoButton = styled.button<DimensionCssProps>`
-  color: red;
-  border: 1px solid blue;
-  font-size: 20px;
-  ${dimensionCssProcessor}
-`

@@ -5,13 +5,10 @@ import { cssProcessor } from '../../core/processors/higherOrder'
 import { visualisationProcessor } from '../../core/processors/visualisation'
 import { layoutProcessor } from '../../core/processors/layout'
 import animationProcessor from '../../core/processors/animation'
-import { PropsFrom } from '../../types'
 
 const cardProcessor = cssProcessor(
   adaptive(hoverable(animationProcessor, visualisationProcessor, layoutProcessor)),
 )
-
-export type CardProps = PropsFrom<typeof cardProcessor>
 
 const Card = styled.div`
   ${cardProcessor}

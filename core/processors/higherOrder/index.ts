@@ -57,15 +57,7 @@ export const combined = <Processors extends Processor<any>[]>(...rest: Processor
 
 export const cssProcessor = <NonCssProcessors extends Processor<any>[]>(
   ...rest: NonCssProcessors
-): CssProcessor<
-  Adaptive<
-    Hoverable<
-      PropsIntersectionFromArrayOfFunctions<NonCssProcessors> & {
-        css?: AllCssProps
-      }
-    >
-  >
-> => {
+) => {
   return (
     props: Adaptive<
       Hoverable<
